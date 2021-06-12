@@ -1,0 +1,10 @@
+.dayText {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 15px;
+}
+
+.calendarDayOfWeek div {
+	text-align: left;
+}

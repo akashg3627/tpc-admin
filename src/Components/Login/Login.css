@@ -1,0 +1,19 @@
+#loginContainer{
+    display: flex;
+    justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#loginCard{
+  height: 10rem;
+  width: 20rem;
+  border-radius: 0.5rem;
+  box-shadow: 0rem 0rem 0.5rem rgba(0, 0, 0 ,0.2);
+  padding: 2rem;
+}
+
+.googleBtn{
+    border: 0.5rem solid grey;
+    border-radius: 0.5rem;
+    display: block;
+}

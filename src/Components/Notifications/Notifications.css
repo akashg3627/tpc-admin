@@ -1,0 +1,15 @@
+.tabDiv{
+    margin-top: 0.4rem;
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 0.2rem;
+}
+.tabDiv:hover{
+    cursor: pointer;
+    box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+}
+.tabActive{
+    border-bottom: 4px solid blue;
+    transition: 0.3s;
+}

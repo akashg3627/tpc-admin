@@ -1,0 +1,53 @@
+.jobRow {
+	border: 1px none grey;
+	border-radius: 0.2rem;
+	box-shadow: 0 0 0.2rem rgba(0, 0, 0, 0.3);
+	padding: 0.2rem;
+	margin: 0.3rem;
+}
+
+
+.adminJob .modal-content {
+	overflow: auto;
+	height: 96vh;
+	width: 90vw;
+	margin: 10px auto;
+	padding: 10px;
+}
+
+.adminJob {
+	max-width: none;
+	margin: 10px;
+}
+
+.adminJobForm .formPart {
+	width: 48%;
+}
+
+.adminJobForm .formMaj {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.adminJobForm .form-group {
+	margin-top: 10px;
+}
+
+.adminJobForm {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.editForm {
+	max-width: 90%;
+}
+
+@media only screen and (max-width: 900px) {
+	.adminJobForm .formPart {
+		width: 90%;
+	}
+}
