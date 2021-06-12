@@ -16,10 +16,10 @@ export const login = (tokenId, history) => {
 			.then((response) => {
 				const res = response.data;
 				// console.log(response);
-				localStorage.setItem("isAdmin", true);
+				localStorage.setItem("isAdmin", res.isAdmin);
 				localStorage.setItem("token", res.token);
 				localStorage.setItem("creds", JSON.stringify(res.user));
-				dispatch(loginRequest(res.user, res.token, true));
+				dispatch(loginRequest(res.user, res.token, res.isAdmin));
 				history.push("/home");
 			})
 			.catch((error) => {
