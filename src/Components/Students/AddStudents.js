@@ -11,8 +11,8 @@ function AddSingleStudent() {
 	let dispatch = useDispatch();
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [branch, setBranch] = useState("");
-	const [year, setYear] = useState("");
+	const [branch, setBranch] = useState("BTech-CSE");
+	const [year, setYear] = useState("2018");
 	const [isPosted, setPost] = useState('0');
 	const togglePost = (e) => {
 		setPost(e);
