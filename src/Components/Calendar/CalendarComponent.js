@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Calendar from "react-awesome-calendar";
 
-import { fetchJobs } from "../../Redux/Reducer/Jobs/jobsReducer";
+import { fetchAdminJobs } from "../../Redux/Reducer/Jobs/jobsReducer";
 import Loading from "../Extra/Loading";
 import "./Calendar.css";
 
 function CalendarComponent() {
 	const dispatch = useDispatch();
-	const jobReducer = useSelector(state=>state.jobs);
+	const jobReducer = useSelector((state) => state.jobs);
 
 	const [events, setEvents] = useState([]);
 
 	useEffect(() => {
-		dispatch(fetchJobs());
+		dispatch(fetchAdminJobs());
 	}, [dispatch]);
 
 	useEffect(() => {

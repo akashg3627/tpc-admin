@@ -32,7 +32,9 @@ function Header(props) {
 						<NavItem>
 							<Link to="/notifications">NOTIFICATIONS</Link>
 						</NavItem>
-
+						<NavItem>
+							<Link to="/calendar">CALENDAR</Link>
+						</NavItem>
 
 						<NavItem>
 							<Link
