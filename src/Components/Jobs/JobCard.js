@@ -103,7 +103,7 @@ function JobCard({ job, index }) {
 			deadline: deadline + " " + time,
 		};
 
-		//  console.log(body);
+		console.log(body);
 		if (toUpdate) {
 			// console.log("update");
 			setUpdate(false);
@@ -363,8 +363,10 @@ function JobCard({ job, index }) {
 										value={status}
 										onChange={(e) => setStatus(e.target.value)}
 									>
+										<option>{status}</option>
 										{statusOptions.map((b) => {
-											return <option>{b.value}</option>;
+											if (b.value !== status) return <option>{b.value}</option>;
+											else return null;
 										})}
 									</Input>
 								</FormGroup>
