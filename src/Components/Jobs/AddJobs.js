@@ -24,13 +24,13 @@ function AddJobs() {
 	const [twitter, setTwitter] = useState("");
 	const [time, setTime] = useState("");
 	const [status, setStatus] = useState("");
-	const [isPosted, setPost] = useState('0');
+	const [isPosted, setPost] = useState("0");
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
-			setPost('0');
+			setPost("0");
 		}, 5000);
-	}
+	};
 	const appendBranch = (e) => {
 		// console.log(e);
 		const branchArray = e.map((b) => {
@@ -220,13 +220,11 @@ function AddJobs() {
 						<FormGroup>
 							<Label for="status">Status</Label>
 							<Input
-
 								name="status"
 								type="select"
 								value={status}
 								onChange={(e) => setStatus(e.target.value)}
 							>
-								<option>{status}</option>
 								{statusOptions.map((b) => {
 									return <option>{b.value}</option>;
 								})}
@@ -245,12 +243,12 @@ function AddJobs() {
 				<Button type="submit" className="mt-4" style={{ maxWidth: "200px", margin: "auto" }} color="primary">
 					Submit
 				</Button>
-				{
-					isPosted === '1' ? <Alert className="mt-2">Job added Successfully!</Alert> : null
-				}
-				{
-					isPosted === '2' ? <Alert color="danger" className="mt-2">Job could not be added. Try again later!</Alert> : null
-				}
+				{isPosted === "1" ? <Alert className="mt-2">Job added Successfully!</Alert> : null}
+				{isPosted === "2" ? (
+					<Alert color="danger" className="mt-2">
+						Job could not be added. Try again later!
+					</Alert>
+				) : null}
 			</Form>
 		</div>
 	);

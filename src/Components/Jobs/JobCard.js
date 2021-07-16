@@ -6,7 +6,6 @@ import { Alert, Button, Modal, ModalBody, Input, ButtonGroup, Label, FormGroup, 
 import { deleteJob, postJob, updateJob } from "../../Redux/Reducer/Jobs/jobsReducer";
 import { branchOptions, yearOptions, statusOptions } from "../../Assets/Data";
 
-
 function JobCard({ job, index }) {
 	let dispatch = useDispatch();
 	const [delModal, setModal] = useState(false);
@@ -36,13 +35,13 @@ function JobCard({ job, index }) {
 		setClone(true);
 		setDisable(false);
 		setUpdate(false);
-	}
+	};
 	const toggleUpdate = () => {
 		setModalM(!modal);
 		setUpdate(true);
 		setDisable(false);
 		setClone(false);
-	}
+	};
 	// console.log(job);
 
 	const [companyName, setName] = useState(job.companyName);
@@ -61,13 +60,13 @@ function JobCard({ job, index }) {
 	const [linkedIn, setLinkedIn] = useState(job.contact.socLinks ? job.contact.socLinks.linkedIn : "");
 	const [twitter, setTwitter] = useState(job.contact.socLinks ? job.contact.socLinks.twitter : "");
 	const [status, setStatus] = useState(job.status);
-	const [isPosted, setPost] = useState('0');
+	const [isPosted, setPost] = useState("0");
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
-			setPost('0');
+			setPost("0");
 		}, 5000);
-	}
+	};
 	const appendBranch = (e) => {
 		// console.log(e);
 		const branchArray = e.map((b) => {
@@ -110,14 +109,12 @@ function JobCard({ job, index }) {
 			setUpdate(false);
 			setDisable(true);
 			dispatch(updateJob(job._id, body, togglePost));
-		}
-		else if (toClone) {
+		} else if (toClone) {
 			// console.log("add");
 			setClone(false);
 			setDisable(true);
 			dispatch(postJob(body, togglePost));
 		}
-
 	}
 
 	return (
@@ -140,15 +137,12 @@ function JobCard({ job, index }) {
 			<td className="text-center">
 				<ButtonGroup>
 					<Button onClick={toggleUpdate} color="success">
-
 						<i className="fa fa-pencil" />
 					</Button>
 					<Button onClick={toggleClone} color="warning">
-
 						<i className="fa fa-clone" />
 					</Button>
-					<Button onClick={toggleDelete} color="danger" >
-
+					<Button onClick={toggleDelete} color="danger">
 						<i className="fa fa-trash" />
 					</Button>
 				</ButtonGroup>
@@ -185,6 +179,7 @@ function JobCard({ job, index }) {
 								setDisable(false);
 							}}
 							color="primary"
+							style={{ marginLeft: "10px" }}
 						>
 							Clone
 						</Button>
@@ -368,7 +363,6 @@ function JobCard({ job, index }) {
 										value={status}
 										onChange={(e) => setStatus(e.target.value)}
 									>
-										<option>{status}</option>
 										{statusOptions.map((b) => {
 											return <option>{b.value}</option>;
 										})}
@@ -391,7 +385,7 @@ function JobCard({ job, index }) {
 										isMulti
 										name="year"
 										isDisabled={disable}
-										placeholder={year.join(' / ')}
+										placeholder={year.join(" / ")}
 										options={yearOptions}
 										onChange={appendYear}
 									/>
@@ -403,11 +397,7 @@ function JobCard({ job, index }) {
 								<Button type="submit" color="success">
 									Save
 								</Button>
-								<Button
-									type="reset"
-
-									color="danger"
-								>
+								<Button type="reset" color="danger">
 									Cancel
 								</Button>
 							</ButtonGroup>
@@ -417,21 +407,17 @@ function JobCard({ job, index }) {
 								<Button type="submit" color="success">
 									Add Job
 								</Button>
-								<Button
-									type="reset"
-
-									color="danger"
-								>
+								<Button type="reset" color="danger">
 									Cancel
 								</Button>
 							</ButtonGroup>
 						)}
-						{
-							isPosted === '1' ? <Alert className="mt-2">Job Updated Successfully!</Alert> : null
-						}
-						{
-							isPosted === '2' ? <Alert color="danger" className="mt-2">Job could not be Updated. Try again later!</Alert> : null
-						}
+						{isPosted === "1" ? <Alert className="mt-2">Job Updated Successfully!</Alert> : null}
+						{isPosted === "2" ? (
+							<Alert color="danger" className="mt-2">
+								Job could not be Updated. Try again later!
+							</Alert>
+						) : null}
 					</Form>
 				</ModalBody>
 			</Modal>
