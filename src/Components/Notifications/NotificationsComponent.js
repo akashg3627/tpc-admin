@@ -22,6 +22,7 @@ function NotifyWithGroup(props) {
 	const [branch, setBranch] = useState([]);
 	const [year, setYear] = useState([]);
 	const [isPosted, setPost] = useState('0');
+	const [companyName, setCompanyName]=useState('');
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
@@ -57,6 +58,7 @@ function NotifyWithGroup(props) {
 		let body = {
 			text: notifyText,
 			subject: sub,
+			companyName: companyName,
 			branch: branch,
 			year: year,
 		};
@@ -77,6 +79,17 @@ function NotifyWithGroup(props) {
 					<Label for="year">Batch</Label>
 
 					<Select isMulti name="year" options={yearOptions} onChange={appendYear} />
+				</FormGroup>
+				<FormGroup className="mt-2">
+					<Label for="notifySub">Company Name</Label>
+					<Input
+						type="text"
+						name="notifySub"
+						onChange={(e) => {
+							setCompanyName(e.target.value);
+						}}
+						placeholder="Company Name"
+					/>
 				</FormGroup>
 				<FormGroup className="mt-2">
 					<Label for="notifySub">Notification Subject</Label>
@@ -112,7 +125,7 @@ function NotifyWithGroup(props) {
 					Send Notification
 				</Button>
 				{
-					isPosted === '1' ? <Alert color="danger" className="mt-2">Notification Posted Successfully!</Alert> : null
+					isPosted === '1' ? <Alert color="success" className="mt-2">Notification Posted Successfully!</Alert> : null
 				}
 				{
 					isPosted === '2' ? <Alert className="mt-2" color="danger">Notification could not be Posted. Try again later!</Alert> : null
@@ -128,6 +141,7 @@ function NotifyWithIds({ emailOptions }) {
 	const [sub, setSub] = useState("");
 	const [emails, setEmails] = useState([]);
 	const [isPosted, setPost] = useState('0');
+	const [companyName, setCompanyName]=useState('');
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
@@ -148,6 +162,7 @@ function NotifyWithIds({ emailOptions }) {
 		e.preventDefault();
 		let body = {
 			text: notifyText,
+			companyName: companyName,
 			subject: sub,
 			emails: emails,
 		};
@@ -163,7 +178,17 @@ function NotifyWithIds({ emailOptions }) {
 
 					<Select isMulti name="emails" options={emailOptions} onChange={appendIds} />
 				</FormGroup>
-
+				<FormGroup className="mt-2">
+					<Label for="notifySub">Company Name</Label>
+					<Input
+						type="text"
+						name="notifySub"
+						onChange={(e) => {
+							setCompanyName(e.target.value);
+						}}
+						placeholder="Company Name"
+					/>
+				</FormGroup>
 				<FormGroup className="mt-2">
 					<Label for="notifySub">Notification Subject</Label>
 					<Input
@@ -190,7 +215,7 @@ function NotifyWithIds({ emailOptions }) {
 					Send Notifications
 				</Button>
 				{
-					isPosted === '1' ? <Alert className="mt-2">Notification Posted Successfully!</Alert> : null
+					isPosted === '1' ? <Alert color="success" className="mt-2">Notification Posted Successfully!</Alert> : null
 				}
 				{
 					isPosted === '2' ? <Alert color="danger" className="mt-2">Notification could not be Posted. Try again later!</Alert> : null
