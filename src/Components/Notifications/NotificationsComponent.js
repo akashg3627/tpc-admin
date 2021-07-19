@@ -11,18 +11,24 @@ import { branchOptions, yearOptions } from "../../Assets/Data";
 // import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 // import ReactHtmlParser from 'react-html-parser'
 
-
 import { postNotificationsBranch, postNotificationsArray } from "../../Redux/Reducer/Notifications/notificationsReducer";
 import { fetchStudents } from '../../Redux/Reducer/Students/studentsReducer'
 
+const tag = ["Opening", "Rejected", "Selected"];
+const tagOtp = tag.map((t) => {
+	return {
+		value: t, label: t
+	}
+});
 function NotifyWithGroup(props) {
 	let dispatch = useDispatch();
 	const [notifyText, setText] = useState("");
 	const [sub, setSub] = useState("");
 	const [branch, setBranch] = useState([]);
 	const [year, setYear] = useState([]);
+	const [tag, setTag] = useState('');
 	const [isPosted, setPost] = useState('0');
-	const [companyName, setCompanyName]=useState('');
+	const [companyName, setCompanyName] = useState('');
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
@@ -55,9 +61,10 @@ function NotifyWithGroup(props) {
 
 	function handleNotify(e) {
 		e.preventDefault();
+		const subject = tag !== '' ? (sub + ' / ' + tag) : sub;
 		let body = {
 			text: notifyText,
-			subject: sub,
+			subject: subject,
 			companyName: companyName,
 			branch: branch,
 			year: year,
@@ -103,6 +110,10 @@ function NotifyWithGroup(props) {
 					/>
 				</FormGroup>
 				<FormGroup className="mt-2">
+					<Label for="tag">Tags</Label>
+					<Select name="tag" options={tagOtp} onChange={(e) => setTag(e.value)} />
+				</FormGroup>
+				<FormGroup className="mt-2">
 					<Label for="notifyText">Notification Text</Label>
 					<Input
 						type="textarea"
@@ -141,7 +152,8 @@ function NotifyWithIds({ emailOptions }) {
 	const [sub, setSub] = useState("");
 	const [emails, setEmails] = useState([]);
 	const [isPosted, setPost] = useState('0');
-	const [companyName, setCompanyName]=useState('');
+	const [tag, setTag] = useState('');
+	const [companyName, setCompanyName] = useState('');
 	const togglePost = (e) => {
 		setPost(e);
 		setTimeout(() => {
@@ -159,11 +171,12 @@ function NotifyWithIds({ emailOptions }) {
 	};
 
 	function handleNotify(e) {
+		const subject = tag !== '' ? (sub + ' / ' + tag) : sub;
 		e.preventDefault();
 		let body = {
 			text: notifyText,
 			companyName: companyName,
-			subject: sub,
+			subject: subject,
 			emails: emails,
 		};
 		console.log("notify to", body);
@@ -199,6 +212,10 @@ function NotifyWithIds({ emailOptions }) {
 						}}
 						placeholder="Email Subject"
 					/>
+				</FormGroup>
+				<FormGroup className="mt-2">
+					<Label for="tag">Tags</Label>
+					<Select name="tag" options={tagOtp} onChange={(e) => setTag(e.value)} />
 				</FormGroup>
 				<FormGroup className="mt-2">
 					<Label for="notifyText">Notification Text</Label>
